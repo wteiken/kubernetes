@@ -60,6 +60,11 @@ type ImageReviewContainerSpec struct {
 type ImageReviewStatus struct {
 	// Allowed indicates that all images were allowed to be run.
 	Allowed bool
+        // ReviewAnnotations should be added to the annotations of the pod.
+	// This may be used to later find pods that required audits. Annotations
+	// will only be added in case 'Allowed' is True.
+	// Annotations should be prefixed by 'alpha.image-policy.k8s.io'.
+	ReviewAnnotations map[string]string
 	// Reason should be empty unless Allowed is false in which case it
 	// may contain a short description of what is wrong.  Kubernetes
 	// may truncate excessively long errors when displaying to the user.

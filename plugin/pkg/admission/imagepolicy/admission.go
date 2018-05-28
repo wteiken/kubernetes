@@ -181,6 +181,13 @@ func (a *Plugin) admitPod(pod *api.Pod, attributes admission.Attributes, review 
 		return errors.New("one or more images rejected by webhook backend")
 	}
 
+	annotations := pod.GetAnnotations()
+	if annotations == nil {
+		annotations = make(map[string]string)
+	}
+	for k, v := range review.Status.ReviewAnnotations {
+		annotations[k] = v
+	}
 	return nil
 }
 

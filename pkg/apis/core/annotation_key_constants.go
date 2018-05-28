@@ -23,6 +23,10 @@ const (
 	// webhook backend fails.
 	ImagePolicyFailedOpenKey string = "alpha.image-policy.k8s.io/failed-open"
 
+	// ImagePolicyAuditRequired is recommended for image review backends to
+	// add when an pod is allowed to be created, but should be audited.
+	ImagePolicyAuditRequired string = "alpha.image-policy.k8s.io/audit-required"
+
 	// PodPresetOptOutAnnotationKey represents the annotation key for a pod to exempt itself from pod preset manipulation
 	PodPresetOptOutAnnotationKey string = "podpreset.admission.kubernetes.io/exclude"
 
